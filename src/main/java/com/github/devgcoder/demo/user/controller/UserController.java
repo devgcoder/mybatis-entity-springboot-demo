@@ -19,8 +19,14 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value = "/addUser")
-	public Long addUser(@RequestBody User user) {
+	public Integer addUser(@RequestBody User user) {
     return userService.addUser(user);
 	}
+
+	@RequestMapping(value = "/updateUser")
+	public Integer updateUser(@RequestBody User user) {
+		return userService.updateUser(user);
+	}
+
 
 }

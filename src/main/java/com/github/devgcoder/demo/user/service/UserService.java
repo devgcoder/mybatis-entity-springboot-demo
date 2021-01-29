@@ -8,6 +8,7 @@ import com.github.devgcoder.demo.user.entity.User;
  */
 public interface UserService {
 
-	public Long addUser(User user);
+	public Integer addUser(User user);
 
+	public Integer updateUser(User user);
 }

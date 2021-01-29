@@ -18,10 +18,16 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	@Override
-	public Long addUser(User user) {
-		mybatisEntityMapper.insertEntity(user);
+	public Integer addUser(User user) {
+		Integer result = mybatisEntityMapper.insertEntity(user);
 		Long id = user.getId();
 		System.out.println("id=" + id);
-		return id;
+		return result;
+	}
+
+	@Override
+	public Integer updateUser(User user) {
+		Integer result = mybatisEntityMapper.updateEntity(user);
+		return result;
 	}
 }
