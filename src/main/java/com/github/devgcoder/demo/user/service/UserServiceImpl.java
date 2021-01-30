@@ -20,8 +20,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Integer addUser(User user) {
 		Integer result = mybatisEntityMapper.insertEntity(user);
-		Long id = user.getId();
-		System.out.println("id=" + id);
 		return result;
 	}
 
