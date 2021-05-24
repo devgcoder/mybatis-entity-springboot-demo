@@ -27,5 +27,7 @@ public interface CacheUser {
 	@CacheDelete(sql = "delete from user where name = '@{name}'")
 	void deleteUser();
 
+	@CacheDelete(sql = "delete from user")
+	void deleteAll();
 
 }

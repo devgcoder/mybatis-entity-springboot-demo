@@ -97,14 +97,15 @@ public class ApplicatioinTest {
 //			}
 //		} catch (IOException | ClassNotFoundException e) {
 //		}
-
-
 		Map cacheMap = new HashMap();
+		Integer num = mybatisEntityService.deleteCacheMap(cacheMap, CacheUser.class, "deleteAll");
+
+		cacheMap = new HashMap();
 		cacheMap.put("name", "张三");
 		cacheMap.put("age", 18);
 		cacheMap.put("name1", "李四");
 		cacheMap.put("age1", 20);
-		Integer num = mybatisEntityService.insertCacheMap(cacheMap, CacheUser.class, "insertUser");
+		num = mybatisEntityService.insertCacheMap(cacheMap, CacheUser.class, "insertUser");
 
 		cacheMap = new HashMap();
 		cacheMap.put("name", "张三");
