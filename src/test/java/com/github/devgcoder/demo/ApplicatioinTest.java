@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -27,6 +28,7 @@ import org.springframework.util.ClassUtils;
  * @Date 2021/1/29 10:19
  */
 
+@Import(MyImport.class)
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ApplicatioinTest {
@@ -100,9 +102,22 @@ public class ApplicatioinTest {
 		Map cacheMap = new HashMap();
 		cacheMap.put("name", "张三");
 		cacheMap.put("age", 18);
-		List<Map<String, Object>> cacheMapList = mybatisEntityService.selectCacheMapList(cacheMap, CacheUser.class,"cacheUserOne");
+		cacheMap.put("name1", "李四");
+		cacheMap.put("age1", 20);
+		Integer num = mybatisEntityService.insertCacheMap(cacheMap, CacheUser.class, "insertUser");
+
+		cacheMap = new HashMap();
+		cacheMap.put("name", "张三");
+		cacheMap.put("age", 20);
+		num = mybatisEntityService.updateCacheMap(cacheMap, CacheUser.class, "updateUser");
+
+		cacheMap = new HashMap();
+		cacheMap.put("name", "李四");
+		num = mybatisEntityService.deleteCacheMap(cacheMap, CacheUser.class, "deleteUser");
+
+
+		List<Map<String, Object>> cacheMapList = mybatisEntityService.selectCacheMapList(cacheMap, CacheUser.class, "selectUser");
 		System.out.println();
-		cacheMapList = mybatisEntityService.selectCacheMapList(cacheMap, CacheUser.class,"cacheUserTwo");
-		System.out.println();
+
 	}
 }

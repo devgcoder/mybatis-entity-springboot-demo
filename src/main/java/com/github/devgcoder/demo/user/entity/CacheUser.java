@@ -1,7 +1,10 @@
 package com.github.devgcoder.demo.user.entity;
 
+import com.github.devgcoder.mybatis.entity.annos.CacheDelete;
+import com.github.devgcoder.mybatis.entity.annos.CacheInsert;
 import com.github.devgcoder.mybatis.entity.annos.CacheMapper;
 import com.github.devgcoder.mybatis.entity.annos.CacheSelect;
+import com.github.devgcoder.mybatis.entity.annos.CacheUpdate;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +16,16 @@ import java.util.Map;
 public interface CacheUser {
 
 	@CacheSelect(sql = "select t.* from user t where $[t.name = '@{name}']$ order by id desc")
-	void cacheUserOne();
+	void selectUser();
 
-	@CacheSelect(sql = "select t.* from user t where $[t.age = @{age}]$ order by id desc")
-	void cacheUserTwo();
+	@CacheInsert(sql = "insert into user(name,age) Values ('@{name}',@{age}),('@{name1}',@{age1})")
+	void insertUser();
+
+	@CacheUpdate(sql = "update user set age=@{age} where name = '@{name}'")
+	void updateUser();
+
+	@CacheDelete(sql = "delete from user where name = '@{name}'")
+	void deleteUser();
+
+
 }
