@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @author duheng
  * @Date 2021/1/29 10:19
  */
+@EnableMybatisEntity
 @MapperScan(basePackages = {"com.github.devgcoder.mybatis.entity.mapper"})
 @SpringBootApplication
 public class Applicatioin {

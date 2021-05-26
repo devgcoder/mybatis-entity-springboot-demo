@@ -1,12 +1,8 @@
 package com.github.devgcoder.demo;
 
 import com.github.devgcoder.demo.user.entity.CacheUser;
-import com.github.devgcoder.mybatis.entity.annos.CacheMapper;
 import com.github.devgcoder.mybatis.entity.service.MybatisEntityService;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
@@ -14,29 +10,19 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
-import org.springframework.core.type.classreading.CachingMetadataReaderFactory;
-import org.springframework.core.type.classreading.MetadataReader;
-import org.springframework.core.type.classreading.MetadataReaderFactory;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.util.ClassUtils;
 
 /**
  * @author duheng
  * @Date 2021/1/29 10:19
  */
 
-@Import(MyImport.class)
+@Import(MyImportSelector.class)
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ApplicatioinTest {
 	@Autowired
 	private MybatisEntityService mybatisEntityService;
-
-	private final String BASE_PACKAGE = "com.github.devgcoder.demo";
-	private final String RESOURCE_PATTERN = "/**/*.class";
 
 	@Test
 	public void testEntity() {

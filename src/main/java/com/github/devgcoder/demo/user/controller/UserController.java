@@ -42,9 +42,8 @@ public class UserController {
 		Map<String, Object> whereMap = new HashMap<>();
 		whereMap.put("name", "张三");
 		whereMap.put("age", 18);
-		List<Map<String, Object>> list1 = mybatisEntityService.selectCacheMapList(whereMap, CacheUser.class, "cacheUserOne");
+		List<Map<String, Object>> list1 = mybatisEntityService.selectCacheMapList(whereMap, CacheUser.class, "selectUser");
     System.out.println();
-		List<Map<String, Object>> list2 = mybatisEntityService.selectCacheMapList(whereMap, CacheUser.class, "cacheUserTwo");
-		return list2;
+		return list1;
 	}
 }
